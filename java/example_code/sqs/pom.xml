@@ -20,6 +20,10 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
+ 	  <dependency>
+		<groupId>software.amazon.awssdk</groupId>
+		<artifactId>sts</artifactId>
+	  </dependency>
     </dependencies>
   </dependencyManagement>
   <dependencies>
@@ -35,4 +39,3 @@
     </dependency>
   </dependencies>
 </project>
-
