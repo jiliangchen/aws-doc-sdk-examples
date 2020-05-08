@@ -23,6 +23,7 @@
  */
 package aws.example.sqs;
 import com.amazonaws.services.sqs.AmazonSQS;
+import com.amazonaws.services.sqs.AmazonSQSClient;
 import com.amazonaws.services.sqs.AmazonSQSClientBuilder;
 import com.amazonaws.services.sqs.model.AmazonSQSException;
 import com.amazonaws.services.sqs.model.CreateQueueResult;
@@ -30,16 +31,15 @@ import com.amazonaws.services.sqs.model.Message;
 import com.amazonaws.services.sqs.model.SendMessageBatchRequest;
 import com.amazonaws.services.sqs.model.SendMessageBatchRequestEntry;
 import com.amazonaws.services.sqs.model.SendMessageRequest;
-import java.util.Date;
 import java.util.List;
 
 public class SendReceiveMessages
 {
-    private static final String QUEUE_NAME = "testQueue" + new Date().getTime();
+    private static final String QUEUE_NAME = "test-c";
 
     public static void main(String[] args)
     {
-        final AmazonSQS sqs = AmazonSQSClientBuilder.defaultClient();
+        final AmazonSQS sqs = AmazonSQSClient.builder().withRegion("us-east-1").build();
 
         try {
             CreateQueueResult create_result = sqs.createQueue(QUEUE_NAME);
